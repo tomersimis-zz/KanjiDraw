@@ -1,20 +1,25 @@
 package br.ufpe.cin.writejapanese;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import br.ufpe.cin.writejapanese.dummy.DummyContent;
+import com.snappydb.SnappydbException;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.ufpe.cin.writejapanese.entity.Kanji;
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -39,6 +44,8 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
      */
     private ListAdapter mAdapter;
 
+    private List<Kanji> items;
+
     // TODO: Rename and change types of parameters
     public static KanjiFragment newInstance(String param1, String param2) {
         KanjiFragment fragment = new KanjiFragment();
@@ -58,10 +65,17 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: Change Adapter to display your content
+        items = new ArrayList<Kanji>();
 
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        try{
+            items.add(Database.getInstance().getObject("success", Kanji.class));
+            items.add(Database.getInstance().getObject("reason", Kanji.class));
+            items.add(Database.getInstance().getObject("superior", Kanji.class));
+        }catch(SnappydbException e){
+            Log.e("SnappyDB", e.getMessage());
+        }
+
+        mAdapter = new KanjiListAdapter(getActivity(), items);
 
         ((MainActivity) getActivity()).getSupportActionBar().show();
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Escolha seu Kanji");
@@ -107,7 +121,7 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteractionKenji(DummyContent.ITEMS.get(position).id);
+            mListener.onFragmentInteractionKanji(items.get(position).getId());
         }
     }
 
@@ -136,7 +150,7 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteractionKenji(String id);
+        public void onFragmentInteractionKanji(String id);
     }
 
 }

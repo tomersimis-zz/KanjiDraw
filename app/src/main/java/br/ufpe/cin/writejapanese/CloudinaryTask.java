@@ -12,7 +12,6 @@ import android.util.Log;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.github.gcacace.signaturepad.views.SignaturePad;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -28,6 +27,8 @@ import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import br.ufpe.cin.writejapanese.pad.SignaturePad;
+
 /**
  * Created by Tomer Simis on 03/06/2015.
  */
@@ -39,9 +40,9 @@ public class CloudinaryTask extends AsyncTask<String, Void, String> {
 
     private CheckerResult result;
 
-    private KanjiDrawActivity.PlaceholderFragment fragment;
+    private KanjiDrawFragment fragment;
 
-    public CloudinaryTask(SignaturePad pad, CheckerResult result, KanjiDrawActivity.PlaceholderFragment fragment){
+    public CloudinaryTask(SignaturePad pad, CheckerResult result, KanjiDrawFragment fragment){
         this.pad = pad;
         this.result = result;
         this.fragment = fragment;

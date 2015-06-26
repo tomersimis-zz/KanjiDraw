@@ -2,12 +2,14 @@ package br.ufpe.cin.writejapanese;
 
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,11 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.view.Window;
 import android.widget.Button;
+
+import com.snappydb.DB;
+import com.snappydb.SnappydbException;
+
+import br.ufpe.cin.writejapanese.entity.Kanji;
 
 
 public class MainActivity extends ActionBarActivity implements MainFragment.OnFragmentInteractionListener, KanjiFragment.OnFragmentInteractionListener{
@@ -30,6 +37,18 @@ public class MainActivity extends ActionBarActivity implements MainFragment.OnFr
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new MainFragment() )
                     .commit();
+        }
+
+        try {
+            Database.init(this);
+
+            DB db = Database.getInstance();
+
+            db.put("success", new Kanji("success", "Sucesso"));
+            db.put("reason", new Kanji("reason", "Razão"));
+            db.put("superior", new Kanji("superior", "Superior"));
+        }catch(SnappydbException e){
+            Log.e("SnappyDB", e.getMessage());
         }
 
     }
@@ -75,8 +94,9 @@ public class MainActivity extends ActionBarActivity implements MainFragment.OnFr
     }
 
     @Override
-    public void onFragmentInteractionKenji(String id) {
+    public void onFragmentInteractionKanji(String id) {
         Intent intent = new Intent(this, KanjiDrawActivity.class);
+        intent.putExtra("kanji_id", id);
         startActivity(intent);
     }
 }
