@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,19 @@
             android:name=".KanjiDrawActivity"
             android:label="@string/title_activity_kanji_draw" >
         </activity>
-        <meta-data android:name="CLOUDINARY_URL" android:value="cloudinary://729866734514146:eAXvYsZgLWuiMG51jXh59jsBOIM@dfgdz578y"/>
+
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="cloudinary://729866734514146:eAXvYsZgLWuiMG51jXh59jsBOIM@dfgdz578y" />
+
+        <activity
+            android:name=".IntroductionActivity"
+            android:label="@string/title_activity_introduction" >
+        </activity>
+        <activity
+            android:name=".KanjiListActivity"
+            android:label="@string/title_activity_kanji_list" >
+        </activity>
     </application>
 
 </manifest>

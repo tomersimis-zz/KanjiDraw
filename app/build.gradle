@@ -4,6 +4,10 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
+    aaptOptions {
+        useNewCruncher false
+    }
+
     defaultConfig {
         applicationId "br.ufpe.cin.writejapanese"
         minSdkVersion 19
@@ -21,8 +25,16 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.cloudinary:cloudinary-android:1.2.0'
     compile 'com.snappydb:snappydb-lib:0.5.2'
     compile 'com.esotericsoftware.kryo:kryo:2.24.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.github.paolorotolo:appintro:2.0.0'
 }

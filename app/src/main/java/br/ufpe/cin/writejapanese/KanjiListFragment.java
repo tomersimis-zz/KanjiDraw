@@ -1,7 +1,6 @@
 package br.ufpe.cin.writejapanese;
 
 import android.app.Activity;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -29,7 +28,7 @@ import br.ufpe.cin.writejapanese.entity.Kanji;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class KanjiFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class KanjiListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private OnFragmentInteractionListener mListener;
 
@@ -47,8 +46,8 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
     private List<Kanji> items;
 
     // TODO: Rename and change types of parameters
-    public static KanjiFragment newInstance(String param1, String param2) {
-        KanjiFragment fragment = new KanjiFragment();
+    public static KanjiListFragment newInstance(String param1, String param2) {
+        KanjiListFragment fragment = new KanjiListFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -58,7 +57,7 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public KanjiFragment() {
+    public KanjiListFragment() {
     }
 
     @Override
@@ -77,8 +76,6 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
 
         mAdapter = new KanjiListAdapter(getActivity(), items);
 
-        ((MainActivity) getActivity()).getSupportActionBar().show();
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Escolha seu Kanji");
     }
 
     @Override
@@ -121,7 +118,7 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteractionKanji(items.get(position).getId());
+            mListener.onKanjiSelection(items.get(position).getId());
         }
     }
 
@@ -150,7 +147,7 @@ public class KanjiFragment extends Fragment implements AbsListView.OnItemClickLi
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteractionKanji(String id);
+        public void onKanjiSelection(String id);
     }
 
 }
