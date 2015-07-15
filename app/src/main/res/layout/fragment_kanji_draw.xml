@@ -16,7 +16,7 @@
         android:padding="200dp"
         app:minWidth="50"
         app:maxWidth="70"
-        app:velocityFilterWeight="0.955"
+        app:velocityFilterWeight="0.8"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_centerHorizontal="true"

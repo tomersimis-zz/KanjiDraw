@@ -26,6 +26,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import org.opencv.android.OpenCVLoader;
+
 import br.ufpe.cin.writejapanese.pad.SignaturePad;
 
 
@@ -35,6 +37,9 @@ public class KanjiDrawActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kanji_draw);
+        if (!OpenCVLoader.initDebug()) {
+            // Handle initialization error
+        }
 
         if (savedInstanceState == null) {
             Fragment f = new KanjiDrawFragment();

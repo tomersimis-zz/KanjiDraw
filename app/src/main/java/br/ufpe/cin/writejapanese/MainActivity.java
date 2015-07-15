@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.snappydb.DB;
 import com.snappydb.SnappydbException;
 
+import java.util.ArrayList;
+
 import br.ufpe.cin.writejapanese.entity.Kanji;
 
 
@@ -36,9 +38,48 @@ public class MainActivity extends ActionBarActivity implements MainFragment.OnFr
 
             DB db = Database.getInstance();
 
-            db.put("success", new Kanji("success", "Sucesso"));
-            db.put("reason", new Kanji("reason", "Razão"));
-            db.put("superior", new Kanji("superior", "Superior"));
+            db.del("kanjis");
+
+            ArrayList<Kanji> kanjis = new ArrayList<Kanji>();
+
+            kanjis.add(new Kanji("boi", "Boi", "easy"));
+            kanjis.add(new Kanji("irmao", "Irmão", "easy"));
+            kanjis.add(new Kanji("rei", "Rei", "easy"));
+            kanjis.add(new Kanji("rio", "Rio", "easy"));
+            kanjis.add(new Kanji("serpente", "Serpente", "easy"));
+            kanjis.add(new Kanji("tres", "Três", "easy"));
+            kanjis.add(new Kanji("estrela", "Estrela", "easy"));
+            kanjis.add(new Kanji("rocha", "Rocha", "easy"));
+            kanjis.add(new Kanji("tesouro", "Tesouro", "easy"));
+            kanjis.add(new Kanji("azul", "Azul", "easy"));
+
+            kanjis.add(new Kanji("lua", "Lua", "medium"));
+            kanjis.add(new Kanji("braco", "Braço", "medium"));
+            kanjis.add(new Kanji("agosto", "Agosto", "medium"));
+            kanjis.add(new Kanji("montanha", "Montanha", "medium"));
+            kanjis.add(new Kanji("dezembro", "Dezembro", "medium"));
+            kanjis.add(new Kanji("felicidade", "Felicidade", "medium"));
+            kanjis.add(new Kanji("fevereiro", "Fevereiro", "medium"));
+            kanjis.add(new Kanji("japao", "Japão", "medium"));
+            kanjis.add(new Kanji("paz", "Paz", "medium"));
+            kanjis.add(new Kanji("vida", "Vida", "medium"));
+            kanjis.add(new Kanji("fe", "Fê", "medium"));
+            kanjis.add(new Kanji("abril", "Abril", "medium"));
+
+            kanjis.add(new Kanji("futuro", "Futuro", "hard"));
+            kanjis.add(new Kanji("honestidade", "Honestidade", "hard"));
+            kanjis.add(new Kanji("sushi", "Sushi", "hard"));
+            kanjis.add(new Kanji("liberdade", "Liberdade", "hard"));
+            kanjis.add(new Kanji("sushi", "Sushi", "hard"));
+            kanjis.add(new Kanji("decepcao", "Decepção", "hard"));
+            kanjis.add(new Kanji("conhecimento", "Conhecimento", "hard"));
+            kanjis.add(new Kanji("amizade", "Amizade", "hard"));
+
+            Kanji[] kanjiArr = kanjis.toArray(new Kanji[kanjis.size()]);
+
+
+
+            db.put("kanjis", kanjiArr);
         }catch(SnappydbException e){
             Log.e("SnappyDB", e.getMessage());
         }

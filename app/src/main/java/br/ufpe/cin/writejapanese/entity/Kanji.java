@@ -15,13 +15,24 @@ public class Kanji {
 
     private int rating;
 
+    private String level;
+
     public Kanji(){
 
     }
 
-    public Kanji(String id, String name) {
+    public Kanji(String id, String name, String level) {
         this.id = id;
         this.name = name;
+        this.level = level;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 
     public String getId() {

@@ -8,4 +8,5 @@
     <string name="title_activity_kanji_draw">KanjiDrawActivity</string>
     <string name="title_activity_introduction">Introduction</string>
     <string name="title_activity_kanji_list">KanjiListActivity</string>
+    <string name="title_activity_kanji_level">Selecione a dificuldade</string>
 </resources>

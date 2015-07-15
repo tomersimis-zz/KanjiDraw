@@ -75,7 +75,7 @@ public class SignaturePad extends View {
             a.recycle();
         }
 
-        mBitmapBrush = BitmapFactory.decodeResource(context.getResources(), R.drawable.stroke3);
+        mBitmapBrush = BitmapFactory.decodeResource(context.getResources(), R.drawable.elipse2);
         mBitmapBrushDimensions = new Vector2(mBitmapBrush.getWidth(), mBitmapBrush.getHeight());
 
 

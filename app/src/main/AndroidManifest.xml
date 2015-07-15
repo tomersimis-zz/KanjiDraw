@@ -37,6 +37,10 @@
             android:name=".KanjiListActivity"
             android:label="@string/title_activity_kanji_list" >
         </activity>
+        <activity
+            android:name=".KanjiLevelActivity"
+            android:label="@string/title_activity_kanji_level" >
+        </activity>
     </application>
 
 </manifest>

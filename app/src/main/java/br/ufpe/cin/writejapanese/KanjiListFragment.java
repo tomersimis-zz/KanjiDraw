@@ -66,10 +66,16 @@ public class KanjiListFragment extends Fragment implements AbsListView.OnItemCli
 
         items = new ArrayList<Kanji>();
 
+        String level = getActivity().getIntent().getStringExtra("level");
+
         try{
-            items.add(Database.getInstance().getObject("success", Kanji.class));
-            items.add(Database.getInstance().getObject("reason", Kanji.class));
-            items.add(Database.getInstance().getObject("superior", Kanji.class));
+
+            Kanji[] kanjis = Database.getInstance().getObjectArray("kanjis", Kanji.class);// get array of string
+            for(Kanji k : kanjis){
+                if(k.getLevel().equals(level)){
+                    items.add(k);
+                }
+            }
         }catch(SnappydbException e){
             Log.e("SnappyDB", e.getMessage());
         }

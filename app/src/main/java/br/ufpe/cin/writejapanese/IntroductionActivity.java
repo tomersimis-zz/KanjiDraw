@@ -46,7 +46,7 @@ public class IntroductionActivity extends AppIntro {
 
     @Override
     public void onDonePressed() {
-        Intent intent = new Intent(this, KanjiListActivity.class);
+        Intent intent = new Intent(this, KanjiLevelActivity.class);
         startActivity(intent);
     }
 
